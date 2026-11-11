@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ds0vydoeu1f74"]
+
+[ext_resource type="Script" uid="uid://87gpg4n5hhla" path="res://ball.gd" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://cyns5f3gai4l1" path="res://images/ball.png" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bwtudkluskuw5" path="res://scenes/paddle.tscn" id="3_lnu2h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dbpq"]
+radius = 16.124516
+
+[node name="Game" type="Node2D" unique_id=196676194]
+
+[node name="ball" type="CharacterBody2D" parent="." unique_id=672691632]
+script = ExtResource("1_yqjtg")
+
+[node name="Sprite2D" type="Sprite2D" parent="ball" unique_id=690296438]
+texture = ExtResource("2_lnu2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball" unique_id=912582153]
+shape = SubResource("CircleShape2D_4dbpq")
+
+[node name="Paddle" parent="." unique_id=625660165 instance=ExtResource("3_lnu2h")]
+position = Vector2(70, 31)
+mass = 100000.0
+metadata/player_control = true
+
+[node name="Area2D" type="StaticBody2D" parent="." unique_id=1351693731]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1289764925]
+build_mode = 1
+polygon = PackedVector2Array(1510, -10, 1610, 100, 1610, 800, 1510, 910, 90, 910, -10, 800, -10, 100, 90, -10)
